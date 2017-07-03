@@ -45,6 +45,8 @@
     <string name="registro_item_salvo">Salvo com Sucesso</string>
     <string name="registro_item_erro">Erro ao Salvar</string>
     <string name="sifrao">R$:</string>
+    <string name="sair">Sair?</string>
+    <string name="realmente_sair">Deseja realmente sair?</string>
     <string-array name="categoria_item">
         <item>Pratos</item>
         <item>Porções</item>

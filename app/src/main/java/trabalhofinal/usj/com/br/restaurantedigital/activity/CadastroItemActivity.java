@@ -17,6 +17,7 @@ import trabalhofinal.usj.com.br.restaurantedigital.R;
 import trabalhofinal.usj.com.br.restaurantedigital.dao.IDAO;
 import trabalhofinal.usj.com.br.restaurantedigital.dao.MenuDAO;
 import trabalhofinal.usj.com.br.restaurantedigital.entity.Menu;
+import trabalhofinal.usj.com.br.restaurantedigital.util.Constantes;
 
 /**
  * Created by Édipo on 02/07/2017.
@@ -28,6 +29,7 @@ public class CadastroItemActivity  extends Activity {
     private IDAO<Menu> menuDAO;
     private int idItem = 0;
     public static final String EXTRA_ID_MENU = "ID_MENU";
+    public String voltar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,7 +57,6 @@ public class CadastroItemActivity  extends Activity {
         p.setNomePrato(nomeItem.getText().toString());
         p.setDescricao(descricao.getText().toString());
 
-
         boolean sucesso = false;
 
         Integer id = getIntent().getIntExtra(MenuDAO.ID, 0);
@@ -79,6 +80,7 @@ public class CadastroItemActivity  extends Activity {
                     Toast.LENGTH_SHORT).show();
         }
 
+
     }
 
     private void prepararEdicao(Integer id){
@@ -94,5 +96,13 @@ public class CadastroItemActivity  extends Activity {
 
 
     }
+
+    //modifica a ação do botão voltar
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, CadastroMenuListActivity.class);
+        startActivity(intent);
+    }
+
 
 }

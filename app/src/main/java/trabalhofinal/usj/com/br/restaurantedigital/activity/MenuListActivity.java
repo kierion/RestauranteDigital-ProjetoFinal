@@ -117,8 +117,6 @@ public class MenuListActivity extends ListActivity {
             setListAdapter(adapter);
         }
 
-        this.menu = criarAlertDialog();
-        this.caixaConfirmacao = criarConfirmacaoDialog();
     }
 
     private List<Map<String, Object>> listarItens(){
@@ -136,26 +134,5 @@ public class MenuListActivity extends ListActivity {
         return itens;
     }
 
-    private AlertDialog criarAlertDialog(){
-        final CharSequence[] items = {
-                getString(R.string.editar),
-                getString(R.string.excluir)
-        };
-        AlertDialog.Builder builder =
-                new AlertDialog.Builder(this);
-        builder.setTitle(R.string.opcoes);
-        builder.setItems(items, listenerMenu);
 
-        return builder.create();
-    }
-
-    private AlertDialog criarConfirmacaoDialog(){
-
-        AlertDialog.Builder builder =
-                new AlertDialog.Builder(this);
-        builder.setMessage(R.string.confirmacao_exclusao);
-        builder.setPositiveButton(R.string.sim, listenerMenu);
-        builder.setNegativeButton(R.string.nao, listenerMenu);
-        return builder.create();
-    }
 }

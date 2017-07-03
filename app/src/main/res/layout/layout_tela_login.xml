@@ -74,7 +74,9 @@
         android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:text="@string/check_box_login" />
+        android:text="@string/check_box_login"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/idBotao_Logar"

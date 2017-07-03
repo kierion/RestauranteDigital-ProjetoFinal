@@ -1,6 +1,8 @@
 package trabalhofinal.usj.com.br.restaurantedigital.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -47,9 +49,27 @@ public class DashboardActivity extends Activity {
 
 
             case R.id.id_MenuInicial_Funcionario_Configuracoes:
-                startActivity(new Intent(this, CadastroItemActivity.class));
+                //startActivity(new Intent(this, CadastroItemActivity.class));
+               //break;
+                Toast.makeText(this, "nao cadastrado Configurações", Toast.LENGTH_SHORT).show();
                 break;
-
         }
+    }
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog_Alert);
+        builder.setTitle(R.string.sair);
+        builder.setMessage(R.string.realmente_sair);
+        builder.setPositiveButton(R.string.sim, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                finish();
+            }
+        });
+        builder.setNegativeButton(R.string.nao, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+            }
+        });
+        AlertDialog alerta = builder.create();
+        alerta.show();
     }
 }

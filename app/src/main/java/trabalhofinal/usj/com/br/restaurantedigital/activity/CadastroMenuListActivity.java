@@ -56,9 +56,6 @@ public class CadastroMenuListActivity extends Activity {
                                     int item) {
                     Integer idMenu = (Integer) itens.get(itemSelecionada).get(MenuDAO.ID);
 
-                    String teste1 = String.valueOf(idMenu);
-                    Toast.makeText(getApplicationContext(), teste1, Toast.LENGTH_LONG).show();
-
                     Intent intent;
                     switch (item){
                         case 0:
@@ -136,7 +133,7 @@ public class CadastroMenuListActivity extends Activity {
                 getString(R.string.excluir)
         };
         AlertDialog.Builder builder =
-                new AlertDialog.Builder(this);
+                new AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog_Alert);
         builder.setTitle(R.string.opcoes);
         builder.setItems(itens, listenerMenu);
 
@@ -146,7 +143,7 @@ public class CadastroMenuListActivity extends Activity {
     private AlertDialog criarConfirmacaoDialog(){
 
         AlertDialog.Builder builder =
-                new AlertDialog.Builder(this);
+                new AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog_Alert);
         builder.setMessage(R.string.confirmacao_exclusao);
         builder.setPositiveButton(R.string.sim, listenerMenu);
         builder.setNegativeButton(R.string.nao, listenerMenu);

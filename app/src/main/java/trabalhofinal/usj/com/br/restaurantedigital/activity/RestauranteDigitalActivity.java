@@ -57,4 +57,8 @@ public class RestauranteDigitalActivity extends Activity {
         }
     }
 }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }
