@@ -32,9 +32,9 @@ public class RestauranteDigitalActivity extends Activity {
     public void loginSistema(View view) {
 
         if (liberaUsuario.isChecked()) {
-            //Intent intent = new Intent(this, DashboardActivity.class);
-            //startActivity(intent);
-            setContentView(R.layout.layout_activity_cliente);
+            Intent intent = new Intent(this, DashboardActivity.class);
+            startActivity(intent);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             Toast t = Toast.makeText(this,
                     R.string.login_sucesso_cliente, Toast.LENGTH_LONG);
             t.show();
@@ -49,6 +49,7 @@ public class RestauranteDigitalActivity extends Activity {
                 & senhaInformada.equals("")){
             Intent intent = new Intent(this, DashboardActivity.class);
             startActivity(intent);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         }
         else{
             Toast t = Toast.makeText(this,
@@ -60,5 +61,6 @@ public class RestauranteDigitalActivity extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 }

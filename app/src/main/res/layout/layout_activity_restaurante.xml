@@ -23,107 +23,152 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/idMenuInicial_Funcionario_Carrinho"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="0.02"
-            android:background="#c8f2b9"
-            android:clickable="true"
-            android:drawableLeft="@drawable/icons29"
-            android:drawableStart="@drawable/icons29"
-            android:gravity="center_vertical|center_horizontal"
-            android:onClick="selecionarOpcao"
-            android:text="@string/menu_carrinho"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="26sp"
-            android:textStyle="bold" />
+            android:layout_margin="1dp"
+            android:background="@android:color/holo_green_dark"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-        <TextView
-            android:id="@+id/id_MenuInicia_Funcionario_Funcionarios"
+            <TextView
+                android:id="@+id/idMenuInicial_Funcionario_Carrinho"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#c8f2b9"
+                android:clickable="true"
+                android:drawableLeft="@drawable/icons29"
+                android:drawableStart="@drawable/icons29"
+                android:gravity="center_vertical|center_horizontal"
+                android:onClick="selecionarOpcao"
+                android:text="@string/menu_carrinho"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="0.06"
-            android:background="#c8f2b9"
-            android:clickable="true"
-            android:drawableLeft="@drawable/icons24"
-            android:drawableStart="@drawable/icons24"
-            android:gravity="center_vertical|center_horizontal"
-            android:onClick="selecionarOpcao"
-            android:text="@string/menu_funcionarios"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="26sp"
-            android:textStyle="bold" />
+            android:layout_margin="1dp"
+            android:background="@android:color/holo_green_dark"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-        <TextView
-            android:id="@+id/id_MenuInicial_Funcionario_Menu"
+            <TextView
+                android:id="@+id/id_MenuInicia_Funcionario_Funcionarios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#c8f2b9"
+                android:clickable="true"
+                android:drawableLeft="@drawable/icons24"
+                android:drawableStart="@drawable/icons24"
+                android:gravity="center_vertical|center_horizontal"
+                android:onClick="selecionarOpcao"
+                android:text="@string/menu_funcionarios"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="0.06"
-            android:background="#c8f2b9"
-            android:clickable="true"
-            android:drawableLeft="@drawable/icon22"
-            android:drawableStart="@drawable/icon22"
-            android:gravity="center_vertical|center_horizontal"
-            android:onClick="selecionarOpcao"
-            android:text="@string/menu_cardapio"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="26sp"
-            android:textStyle="bold" />
+            android:layout_margin="1dp"
+            android:background="@android:color/holo_green_dark"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-        <TextView
-            android:id="@+id/id_MenuInicial_Funcionario_Cadastro_Menu"
+            <TextView
+                android:id="@+id/id_MenuInicial_Funcionario_Menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#c8f2b9"
+                android:clickable="true"
+                android:drawableLeft="@drawable/icon22"
+                android:drawableStart="@drawable/icon22"
+                android:gravity="center_vertical|center_horizontal"
+                android:onClick="selecionarOpcao"
+                android:text="@string/menu_cardapio"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="0.05"
-            android:background="#c8f2b9"
-            android:clickable="true"
-            android:drawableLeft="@drawable/icons17"
-            android:drawableStart="@drawable/icons17"
-            android:gravity="center_vertical|center_horizontal"
-            android:onClick="selecionarOpcao"
-            android:text="@string/menu_cadastro"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="26sp"
-            android:textStyle="bold" />
+            android:layout_margin="1dp"
+            android:background="@android:color/holo_green_dark"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-        <TextView
-            android:id="@+id/id_MenuInicial_Funcionario_Configuracoes"
+            <TextView
+                android:id="@+id/id_MenuInicial_Funcionario_Cadastro_Menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#c8f2b9"
+                android:clickable="true"
+                android:drawableLeft="@drawable/icons17"
+                android:drawableStart="@drawable/icons17"
+                android:gravity="center_vertical|center_horizontal"
+                android:onClick="selecionarOpcao"
+                android:text="@string/menu_cadastro"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="0.06"
-            android:background="#c8f2b9"
-            android:clickable="true"
-            android:drawableLeft="@drawable/icons28"
-            android:drawableStart="@drawable/icons28"
-            android:gravity="center_vertical|center_horizontal"
-            android:onClick="selecionarOpcao"
-            android:text="@string/menu_configuracoes"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="26sp"
-            android:textStyle="bold" />
+            android:layout_margin="1dp"
+            android:background="@android:color/holo_green_dark"
+            android:orientation="vertical"
+            android:weightSum="1">
 
+            <TextView
+                android:id="@+id/id_MenuInicial_Funcionario_Configuracoes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#c8f2b9"
+                android:clickable="true"
+                android:drawableLeft="@drawable/icons28"
+                android:drawableStart="@drawable/icons28"
+                android:gravity="center_vertical|center_horizontal"
+                android:onClick="selecionarOpcao"
+                android:text="@string/menu_configuracoes"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="26sp"
+                android:textStyle="bold" />
 
+        </RelativeLayout>
     </LinearLayout>
 
     <TextView

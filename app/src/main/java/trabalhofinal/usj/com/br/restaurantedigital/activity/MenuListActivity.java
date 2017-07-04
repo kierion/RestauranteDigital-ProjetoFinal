@@ -59,6 +59,7 @@ public class MenuListActivity extends ListActivity {
                             intent = new Intent(getApplicationContext(), CadastroMenuListActivity.class);
                             intent.putExtra(MenuDAO.ID, idMenu);
                             startActivity(intent);
+                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                             break;
                         case 1: //remover item
                             caixaConfirmacao.show();
@@ -74,6 +75,7 @@ public class MenuListActivity extends ListActivity {
                                 intent.putExtra(MenuDAO.ID, idMenu);
                                 caixaConfirmacao.dismiss();
                                 startActivity(intent);
+                                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                             }
                             break;
                         case DialogInterface.BUTTON_NEGATIVE:
@@ -134,5 +136,9 @@ public class MenuListActivity extends ListActivity {
         return itens;
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
 }

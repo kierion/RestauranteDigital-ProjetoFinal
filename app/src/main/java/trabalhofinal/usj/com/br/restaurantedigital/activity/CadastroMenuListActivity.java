@@ -62,6 +62,7 @@ public class CadastroMenuListActivity extends Activity {
                             intent = new Intent(getApplicationContext(), CadastroItemActivity.class);
                             intent.putExtra(MenuDAO.ID, idMenu);
                             startActivity(intent);
+                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                             break;
                         case 1:
                             menuConfirmar.show();
@@ -158,6 +159,7 @@ public class CadastroMenuListActivity extends Activity {
         bundle.putInt(CadastroItemActivity.EXTRA_ID_MENU, 0);
         intent.putExtras(bundle);
         startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     @Override

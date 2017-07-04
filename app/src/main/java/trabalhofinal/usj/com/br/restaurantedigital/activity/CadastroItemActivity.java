@@ -74,6 +74,7 @@ public class CadastroItemActivity  extends Activity {
                     Toast.LENGTH_SHORT).show();
             startActivity(new Intent(
                     this, CadastroMenuListActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         }
         else{
             Toast.makeText(this, getString(R.string.registro_item_erro),
@@ -102,6 +103,7 @@ public class CadastroItemActivity  extends Activity {
     public void onBackPressed() {
         Intent intent = new Intent(this, CadastroMenuListActivity.class);
         startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
 
