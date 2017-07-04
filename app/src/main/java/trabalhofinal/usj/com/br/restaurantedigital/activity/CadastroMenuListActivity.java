@@ -159,4 +159,10 @@ public class CadastroMenuListActivity extends Activity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
 }

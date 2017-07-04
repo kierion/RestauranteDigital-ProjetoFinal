@@ -41,10 +41,13 @@ public class DashboardActivity extends Activity {
 
             case R.id.id_MenuInicial_Funcionario_Menu:
                 startActivity(new Intent(this, MenuListActivity.class));
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 break;
 
             case R.id.id_MenuInicial_Funcionario_Cadastro_Menu:
                 startActivity(new Intent(this, CadastroMenuListActivity.class));
+                //transição de activitys
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 break;
 
 
@@ -63,6 +66,7 @@ public class DashboardActivity extends Activity {
         builder.setPositiveButton(R.string.sim, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
                 finish();
+                overridePendingTransition(0, android.R.anim.slide_out_right);
             }
         });
         builder.setNegativeButton(R.string.nao, new DialogInterface.OnClickListener() {
