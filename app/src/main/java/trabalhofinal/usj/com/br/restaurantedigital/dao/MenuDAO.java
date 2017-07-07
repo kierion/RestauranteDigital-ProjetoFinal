@@ -28,6 +28,7 @@ public class MenuDAO implements IDAO<Menu> {
     public static final String PRECO = "preco";
     public static final String NOME_PRATO = "nomePrato";
     public static final String DESCRICAO = "descricao";
+    public static final String IMAGEM = "imagem";
 
 
     public MenuDAO(Context context) {
@@ -35,14 +36,15 @@ public class MenuDAO implements IDAO<Menu> {
     }
 
     public static final String[] COLUNAS = new String[]{
-            ID, PRECO, NOME_PRATO, DESCRICAO };
+            ID, PRECO, NOME_PRATO, DESCRICAO, IMAGEM };
 
     public static String criarTabela() {
         return "CREATE TABLE " + TABELA + "(" +
                 ID + " INTEGER PRIMARY KEY, " +
                 PRECO + " DOUBLE, " +
                 NOME_PRATO + " TEXT, " +
-                DESCRICAO + " TEXT);";
+                DESCRICAO + " TEXT, " +
+                IMAGEM + " BLOB);";
     }
 
     @Override
@@ -51,6 +53,7 @@ public class MenuDAO implements IDAO<Menu> {
         values.put(PRECO, p.getPreco());
         values.put(NOME_PRATO, p.getNomePrato());
         values.put(DESCRICAO, p.getDescricao());
+        values.put(IMAGEM, p.getImagem());
 
         long resultado = helper.getWritableDatabase().insert(TABELA,null,values);
 
@@ -81,6 +84,7 @@ public class MenuDAO implements IDAO<Menu> {
         values.put(PRECO, p.getPreco());
         values.put(NOME_PRATO, p.getNomePrato());
         values.put(DESCRICAO, p.getDescricao());
+        values.put(IMAGEM, p.getImagem());
 
         String id = p.getId().toString();
         int resultado = helper.getWritableDatabase().update(TABELA, values, ID+" = ?", new String[]{id});
@@ -94,7 +98,7 @@ public class MenuDAO implements IDAO<Menu> {
 
         List<Menu> lista = new ArrayList<>();
         String sql = "SELECT "+ obterColunasConsulta() +" FROM "+ TABELA;
-        Cursor cursor =  helper.getReadableDatabase().rawQuery(sql,null);
+        Cursor cursor =  helper.getReadableDatabase().rawQuery(sql, null);
         cursor.moveToFirst();
 
         for(int i = 0; i < cursor.getCount(); i++){
@@ -142,6 +146,7 @@ public class MenuDAO implements IDAO<Menu> {
         p.setPreco(cursor.getString(cursor.getColumnIndex(PRECO)));
         p.setNomePrato(cursor.getString(cursor.getColumnIndex(NOME_PRATO)));
         p.setDescricao(cursor.getString(cursor.getColumnIndex(DESCRICAO)));
+        p.setImagem(cursor.getBlob(cursor.getColumnIndex(IMAGEM)));
 
     }
 

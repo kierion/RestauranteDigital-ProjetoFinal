@@ -41,13 +41,10 @@ public class DashboardActivity extends Activity {
 
             case R.id.id_MenuInicial_Funcionario_Menu:
                 startActivity(new Intent(this, MenuListActivity.class));
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 break;
 
             case R.id.id_MenuInicial_Funcionario_Cadastro_Menu:
                 startActivity(new Intent(this, CadastroMenuListActivity.class));
-                //transição de activitys
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 break;
 
 
@@ -63,13 +60,12 @@ public class DashboardActivity extends Activity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog_Alert);
         builder.setTitle(R.string.sair);
         builder.setMessage(R.string.realmente_sair);
-        builder.setPositiveButton(R.string.sim, new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
                 finish();
-                overridePendingTransition(0, android.R.anim.slide_out_right);
             }
         });
-        builder.setNegativeButton(R.string.nao, new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("NÃO", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
             }
         });

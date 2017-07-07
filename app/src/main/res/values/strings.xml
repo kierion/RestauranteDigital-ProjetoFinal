@@ -47,6 +47,10 @@
     <string name="sifrao">R$:</string>
     <string name="sair">Sair?</string>
     <string name="realmente_sair">Deseja realmente sair?</string>
+    <string name="cadastro_imagem">Cadastro de imagem</string>
+    <string name="sem_permisao">Você não tem permissões de acesso!</string>
+    <string name="busca_do_cartao"> Buscar Foto </string>
+    <string name="tirar_foto"> Tirar Foto </string>
     <string-array name="categoria_item">
         <item>Pratos</item>
         <item>Porções</item>

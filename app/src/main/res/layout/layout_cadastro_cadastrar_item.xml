@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -39,15 +40,51 @@
         android:textColor="@color/colorPrimaryDark"
         android:background="@android:color/background_light" />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/id_imagem_view_pager_cadastro"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/background_light" />
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/idCadastrar_Imagem"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/cadastro_imagem"
+            app:srcCompat="@drawable/logo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/idBotaoSD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/holo_green_dark"
+                android:text="@string/busca_do_cartao" />
+
+            <Button
+                android:id="@+id/idTirarFoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="40dp"
+                android:background="@android:color/holo_green_dark"
+                android:text="@string/tirar_foto" />
+        </LinearLayout>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/idTextView_nome_item_tela_cadastro"
@@ -136,8 +173,8 @@
         android:layout_marginRight="20dp"
         android:background="@android:color/holo_green_dark"
         android:foregroundGravity="center"
-        android:onClick="cadastrar"
         android:gravity="center_vertical|center_horizontal|center"
+        android:onClick="cadastrar"
         android:text="@string/texto_botao_salvar_cadastro_item" />
 
 </LinearLayout>

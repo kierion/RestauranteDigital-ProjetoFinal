@@ -11,15 +11,18 @@ public class Menu implements Serializable{
     private Integer id;
     private String preco;
     private String nomePrato, descricao;
+    private byte[] imagem;
 
-    public Menu(){}
-
-    public Menu(Integer id, String preco, String nomePrato, String descricao) {
+    public Menu(Integer id, String preco, String nomePrato, String descricao, byte[] imagem) {
         this.id = id;
         this.preco = preco;
         this.nomePrato = nomePrato;
         this.descricao = descricao;
+        this.imagem = imagem;
+
     }
+
+    public Menu(){}
 
 
     public Integer getId() {
@@ -54,5 +57,12 @@ public class Menu implements Serializable{
         this.descricao = descricao;
     }
 
+    public byte[] getImagem() {
+       return imagem;
+    }
+
+    public void setImagem(byte[] imagem) {
+        this.imagem = imagem;
+    }
 
 }

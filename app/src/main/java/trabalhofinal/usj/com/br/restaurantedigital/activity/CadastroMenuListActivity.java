@@ -5,11 +5,15 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Base64;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -37,6 +41,7 @@ public class CadastroMenuListActivity extends Activity {
     private List<Map<String, Object>> itens;
     private int itemSelecionada;
     private AlertDialog menu, menuConfirmar;
+    private ImageView img;
 
 
     private AdapterView.OnItemClickListener listener =
@@ -90,9 +95,11 @@ public class CadastroMenuListActivity extends Activity {
         setContentView(R.layout.layout_cadastro_listview_cadastro_itens);
         dao = new MenuDAO(getApplicationContext());
         listView = (ListView) findViewById(R.id.idCadastroListView);
+        img = (ImageView) findViewById(R.id.idCadastrar_Imagem);
 
-        String[] de = {MenuDAO.NOME_PRATO, MenuDAO.PRECO};
-        int[] para = {R.id.idListaItens_Nome_Item, R.id.idListaItens_Preco_Item};
+
+        String[] de = {MenuDAO.NOME_PRATO, MenuDAO.PRECO, MenuDAO.IMAGEM};
+        int[] para = {R.id.idListaItens_Nome_Item, R.id.idListaItens_Preco_Item, R.id.idListaItens_Imagem_do_Item};
         itens = listarItens();
 
         SimpleAdapter adapter = new SimpleAdapter(
@@ -121,6 +128,10 @@ public class CadastroMenuListActivity extends Activity {
             item.put(MenuDAO.PRECO, p.getPreco());
             item.put(MenuDAO.NOME_PRATO, p.getNomePrato());
             item.put(MenuDAO.DESCRICAO, p.getDescricao());
+
+
+
+            item.put(MenuDAO.IMAGEM, (R.drawable.icons28));
 
             itens.add(item);
         }
@@ -164,7 +175,40 @@ public class CadastroMenuListActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+        startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
+
+
+
+    private byte[] conversorImagemEmByte (ImageView view){
+
+        view.setDrawingCacheEnabled(true);
+
+        view.buildDrawingCache();
+
+        Bitmap bm = view.getDrawingCache();
+
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+
+
+        return byteArray;
+    }
+
+    private ImageView converteByteEmImg (byte[] bts){
+        ImageView img2;
+        img2 = (ImageView) findViewById(R.id.imageView2);
+        Bitmap bm = BitmapFactory.decodeByteArray(bts, 0, bts.length);
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+        img2.setMinimumHeight(dm.heightPixels);
+        img2.setMinimumWidth(dm.widthPixels);
+        img2.setImageBitmap(bm);
+        return img2;
+    }
+
 }

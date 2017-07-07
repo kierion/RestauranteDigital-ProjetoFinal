@@ -11,6 +11,7 @@ public class Constantes {
     public static final int CATEGORIA_BEBIDAS = 3;
     public static final int CATEGORIA_DOCES = 4;
     public static final String VOLTAR_LISTA = "voltar á lista";
+    public static int REQUEST_CODE_GALERY = 999;
 
 }
 

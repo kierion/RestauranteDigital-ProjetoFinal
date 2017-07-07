@@ -13,7 +13,7 @@ import trabalhofinal.usj.com.br.restaurantedigital.dao.MenuDAO;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String BANCO_DADOS = "BancoMenu";
-    private static int version = 2;
+    private static int version = 12;
 
 
     public DatabaseHelper(Context context) {
@@ -28,7 +28,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db,
-                          int i, int i1) {
+                          int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS menu");
+        onCreate(db);
 
     }
 }
