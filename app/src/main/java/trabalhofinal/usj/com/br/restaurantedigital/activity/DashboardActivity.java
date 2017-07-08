@@ -22,7 +22,6 @@ public class DashboardActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_activity_restaurante);
-        //itemDAO = new ItemDAO(getApplicationContext());
     }
 
     public void selecionarOpcao(View view) {
@@ -55,17 +54,21 @@ public class DashboardActivity extends Activity {
                 break;
         }
     }
+
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog_Alert);
         builder.setTitle(R.string.sair);
         builder.setMessage(R.string.realmente_sair);
-        builder.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getString(R.string.sim), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
-                finish();
+                Intent intent = new Intent(getApplicationContext(),RestauranteDigitalActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
-        builder.setNegativeButton("NÃO", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getString(R.string.nao), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
             }
         });

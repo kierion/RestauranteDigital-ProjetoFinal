@@ -1,5 +1,6 @@
 package trabalhofinal.usj.com.br.restaurantedigital.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +15,8 @@ public interface IDAO<T> {
 
     boolean atualizar(T p);
 
-    List<T> listar();
+    ArrayList<T> listar();
 
     T buscarPorId(Integer id);
+    Integer buscarIdporPosicao(Integer id);
 }

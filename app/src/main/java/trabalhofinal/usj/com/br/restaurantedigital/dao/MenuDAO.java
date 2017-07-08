@@ -3,12 +3,8 @@ package trabalhofinal.usj.com.br.restaurantedigital.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import trabalhofinal.usj.com.br.restaurantedigital.entity.Menu;
 import trabalhofinal.usj.com.br.restaurantedigital.util.DatabaseHelper;
@@ -94,9 +90,9 @@ public class MenuDAO implements IDAO<Menu> {
     }
 
     @Override
-    public List<Menu> listar() {
+    public ArrayList<Menu> listar() {
 
-        List<Menu> lista = new ArrayList<>();
+        ArrayList<Menu> lista = new ArrayList<>();
         String sql = "SELECT "+ obterColunasConsulta() +" FROM "+ TABELA;
         Cursor cursor =  helper.getReadableDatabase().rawQuery(sql, null);
         cursor.moveToFirst();
@@ -148,6 +144,20 @@ public class MenuDAO implements IDAO<Menu> {
         p.setDescricao(cursor.getString(cursor.getColumnIndex(DESCRICAO)));
         p.setImagem(cursor.getBlob(cursor.getColumnIndex(IMAGEM)));
 
+    }
+
+    public Integer buscarIdporPosicao(Integer posicao) {
+        String sql = "SELECT " + ID + " FROM " + TABELA;
+        Cursor cursor = helper.getReadableDatabase().rawQuery(sql, null);
+        ArrayList<Integer> arrID = new ArrayList<Integer>();
+        cursor.moveToFirst();
+        for(int i = 0; i < cursor.getCount(); i++){
+            arrID.add(cursor.getInt(cursor.getColumnIndex(ID)));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        Integer id = arrID.get(posicao);
+        return  id;
     }
 
 }

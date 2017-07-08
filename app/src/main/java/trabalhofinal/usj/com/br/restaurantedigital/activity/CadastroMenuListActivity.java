@@ -4,31 +4,18 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Base64;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
-
-import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import trabalhofinal.usj.com.br.restaurantedigital.R;
 import trabalhofinal.usj.com.br.restaurantedigital.dao.IDAO;
 import trabalhofinal.usj.com.br.restaurantedigital.dao.MenuDAO;
 import trabalhofinal.usj.com.br.restaurantedigital.entity.Menu;
-import trabalhofinal.usj.com.br.restaurantedigital.util.Constantes;
+import trabalhofinal.usj.com.br.restaurantedigital.util.CadastroAdapter;
 
 /**
  * Created by Édipo on 01/07/2017.
@@ -38,17 +25,16 @@ public class CadastroMenuListActivity extends Activity {
 
     private ListView listView;
     private IDAO<Menu> dao;
-    private List<Map<String, Object>> itens;
-    private int itemSelecionada;
+    private int itemSelecionada, idSelecionado;
     private AlertDialog menu, menuConfirmar;
-    private ImageView img;
-
+    private CadastroAdapter adapter = null;
 
     private AdapterView.OnItemClickListener listener =
             new AdapterView.OnItemClickListener() {
                 @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                public void onItemClick(AdapterView<?> layout, View contentView, int position, long id) {
                     itemSelecionada = position;
+                    idSelecionado = (int) id;
                     menu.show();
                 }
             };
@@ -57,9 +43,9 @@ public class CadastroMenuListActivity extends Activity {
             new DialogInterface.OnClickListener() {
 
                 @Override
-                public void onClick(DialogInterface dialogInterface,
-                                    int item) {
-                    Integer idMenu = (Integer) itens.get(itemSelecionada).get(MenuDAO.ID);
+                public void onClick(DialogInterface dialogInterface, int item) {
+
+                    Integer idMenu = dao.buscarIdporPosicao(itemSelecionada);
 
                     Intent intent;
                     switch (item){
@@ -72,16 +58,21 @@ public class CadastroMenuListActivity extends Activity {
                         case 1:
                             menuConfirmar.show();
                             break;
+
                         case DialogInterface.BUTTON_POSITIVE:
                             Boolean sucesso = dao.excluir(idMenu);
                             if (sucesso){
-                                itens.remove(itemSelecionada);
                                 Toast.makeText(getApplicationContext(), R.string.remover_item_sucesso,
                                         Toast.LENGTH_LONG).show();
-                                menuConfirmar.dismiss();
+                               intent = new Intent(getApplicationContext(),CadastroMenuListActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+
+                                adapter.notifyDataSetChanged();
                             }
                             listView.invalidateViews();
                             break;
+
                         case DialogInterface.BUTTON_NEGATIVE:
                             menuConfirmar.dismiss();
                             break;
@@ -94,49 +85,14 @@ public class CadastroMenuListActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_cadastro_listview_cadastro_itens);
         dao = new MenuDAO(getApplicationContext());
+
         listView = (ListView) findViewById(R.id.idCadastroListView);
-        img = (ImageView) findViewById(R.id.idCadastrar_Imagem);
-
-
-        String[] de = {MenuDAO.NOME_PRATO, MenuDAO.PRECO, MenuDAO.IMAGEM};
-        int[] para = {R.id.idListaItens_Nome_Item, R.id.idListaItens_Preco_Item, R.id.idListaItens_Imagem_do_Item};
-        itens = listarItens();
-
-        SimpleAdapter adapter = new SimpleAdapter(
-                this,
-                itens,
-                R.layout.layout_cadastro_listar_itens_cadastrados,
-                de,
-                para);
-        //setando as opcoes da list view
+        adapter = new CadastroAdapter(this, dao.listar());
         listView.setAdapter(adapter);
-
-        //setando as acoes a serem tomadas ao clicar em cada opcao
         listView.setOnItemClickListener(listener);
 
         menu = criarAlertDialog();
         menuConfirmar = criarConfirmacaoDialog();
-    }
-
-    private List<Map<String, Object>> listarItens(){
-
-        itens = new ArrayList<Map<String, Object>>();
-
-        for(Menu p: dao.listar()){
-            Map<String, Object> item = new HashMap<String, Object>();
-            item.put(MenuDAO.ID, p.getId());
-            item.put(MenuDAO.PRECO, p.getPreco());
-            item.put(MenuDAO.NOME_PRATO, p.getNomePrato());
-            item.put(MenuDAO.DESCRICAO, p.getDescricao());
-
-
-
-            item.put(MenuDAO.IMAGEM, (R.drawable.icons28));
-
-            itens.add(item);
-        }
-
-        return itens;
     }
 
     private AlertDialog criarAlertDialog(){
@@ -171,44 +127,6 @@ public class CadastroMenuListActivity extends Activity {
         intent.putExtras(bundle);
         startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-    }
-
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
-        startActivity(intent);
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-    }
-
-
-
-    private byte[] conversorImagemEmByte (ImageView view){
-
-        view.setDrawingCacheEnabled(true);
-
-        view.buildDrawingCache();
-
-        Bitmap bm = view.getDrawingCache();
-
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] byteArray = stream.toByteArray();
-
-
-        return byteArray;
-    }
-
-    private ImageView converteByteEmImg (byte[] bts){
-        ImageView img2;
-        img2 = (ImageView) findViewById(R.id.imageView2);
-        Bitmap bm = BitmapFactory.decodeByteArray(bts, 0, bts.length);
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-
-        img2.setMinimumHeight(dm.heightPixels);
-        img2.setMinimumWidth(dm.widthPixels);
-        img2.setImageBitmap(bm);
-        return img2;
     }
 
 }

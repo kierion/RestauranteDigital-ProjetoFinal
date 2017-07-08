@@ -58,9 +58,11 @@ public class RestauranteDigitalActivity extends Activity {
         }
     }
 }
+
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        finish();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
     }
 }
