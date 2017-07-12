@@ -12,43 +12,33 @@ import android.widget.Toast;
 import trabalhofinal.usj.com.br.restaurantedigital.R;
 
 /**
- * Created by Édipo on 01/07/2017.
+ * Created by Édipo on 11/07/2017.
  */
 
-public class DashboardActivity extends Activity {
+public class DashboardClienteActivity extends Activity {
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_activity_restaurante);
+        setContentView(R.layout.layout_activity_cliente);
     }
 
     public void selecionarOpcao(View view) {
         switch (view.getId()){
-            case R.id.idMenuInicial_Funcionario_Carrinho:
-                //startActivity(new Intent(this, CarrinhoActivity.class));
-                Toast.makeText(this, R.string.em_construcao, Toast.LENGTH_SHORT).show();
+            case R.id.id_MenuInicial_Cliente_Carrinho:
+                Toast.makeText(getApplicationContext(), R.string.em_construcao, Toast.LENGTH_LONG).show();
+                startActivity(new Intent(this, MenuListActivity.class));
                 break;
 
-            case R.id.id_MenuInicia_Funcionario_Funcionarios:
-                    startActivity(new Intent(this, GerenciarFuncionariosListActivity.class));
-                    break;
+            case R.id.id_MeniInicial_Cliente_Chamar_Garcom:
+                Toast.makeText(getApplicationContext(), R.string.aguardar_garcom, Toast.LENGTH_LONG).show();
+                //todo implementar serviço de rest para comunicar o usuário garçom.
+                break;
 
-            case R.id.id_MenuInicial_Funcionario_Menu:
+            case R.id.id_MenuInicial_Cliente_Menu:
                 startActivity(new Intent(this, MenuDetalhadoActivity.class));
                 break;
-
-            case R.id.id_MenuInicial_Funcionario_Cadastro_Menu:
-                startActivity(new Intent(this, CadastroMenuListActivity.class));
-                break;
-
-
-            case R.id.id_MenuInicial_Funcionario_Configuracoes:
-                //startActivity(new Intent(this, ConfiguracoesActivity.class));
-                Toast.makeText(this, R.string.em_construcao, Toast.LENGTH_SHORT).show();
-               break;
-
         }
     }
 

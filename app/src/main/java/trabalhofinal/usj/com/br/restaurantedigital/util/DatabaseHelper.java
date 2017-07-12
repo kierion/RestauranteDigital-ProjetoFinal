@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import trabalhofinal.usj.com.br.restaurantedigital.dao.CadastroDAO;
 import trabalhofinal.usj.com.br.restaurantedigital.dao.MenuDAO;
 
 /**
@@ -13,7 +14,7 @@ import trabalhofinal.usj.com.br.restaurantedigital.dao.MenuDAO;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String BANCO_DADOS = "BancoMenu";
-    private static int version = 13;
+    private static int version = 18;
 
 
     public DatabaseHelper(Context context) {
@@ -23,6 +24,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(MenuDAO.criarTabela());
+        db.execSQL(CadastroDAO.criarTabela());
+
 
     }
 
@@ -30,6 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db,
                           int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS menu");
+        db.execSQL("DROP TABLE IF EXISTS cadastro");
         onCreate(db);
 
     }

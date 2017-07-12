@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,16 +22,23 @@
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="24sp"
-            android:textStyle="bold" />
-
+            android:textStyle="bold"
+            tools:ignore="InefficientWeight" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:background="@android:color/holo_green_dark"
+            android:orientation="vertical"
+            android:weightSum="1">
         <TextView
             android:id="@+id/id_MenuInicial_Cliente_Carrinho"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
-            android:layout_weight="0.02"
             android:background="#c8f2b9"
             android:clickable="true"
             android:drawableLeft="@drawable/icons29"
@@ -42,47 +50,64 @@
             android:textColor="#000000"
             android:textSize="26sp"
             android:textStyle="bold" />
+    </RelativeLayout>
 
-        <TextView
-            android:id="@+id/id_MeniInicial_Cliente_Chamar_Garcom"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="0.06"
-            android:background="#c8f2b9"
-            android:clickable="true"
-            android:drawableLeft="@drawable/icons24"
-            android:drawableStart="@drawable/icons24"
-            android:gravity="center_vertical|center_horizontal"
-            android:onClick="selecionarOpcao"
-            android:text="@string/menu_solicitar_garcom"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="26sp"
-            android:textStyle="bold" />
+            android:layout_margin="1dp"
+            android:background="@android:color/holo_green_dark"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-        <TextView
-            android:id="@+id/id_MenuInicial_Cliente_Menu"
+            <TextView
+                android:id="@+id/id_MeniInicial_Cliente_Chamar_Garcom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#c8f2b9"
+                android:clickable="true"
+                android:drawableLeft="@drawable/icons24"
+                android:drawableStart="@drawable/icons24"
+                android:gravity="center_vertical|center_horizontal"
+                android:onClick="selecionarOpcao"
+                android:text="@string/menu_solicitar_garcom"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="0.06"
-            android:background="#c8f2b9"
-            android:clickable="true"
-            android:drawableLeft="@drawable/icon22"
-            android:drawableStart="@drawable/icon22"
-            android:gravity="center_vertical|center_horizontal"
-            android:onClick="selecionarOpcao"
-            android:text="@string/menu_cardapio"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="26sp"
-            android:textStyle="bold" />
+            android:layout_margin="1dp"
+            android:background="@android:color/holo_green_dark"
+            android:orientation="vertical"
+            android:weightSum="1">
 
+            <TextView
+                android:id="@+id/id_MenuInicial_Cliente_Menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#c8f2b9"
+                android:clickable="true"
+                android:drawableLeft="@drawable/icon22"
+                android:drawableStart="@drawable/icon22"
+                android:gravity="center_vertical|center_horizontal"
+                android:onClick="selecionarOpcao"
+                android:text="@string/menu_cardapio"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
 
     </LinearLayout>
 

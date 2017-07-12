@@ -125,15 +125,15 @@ public class MenuDAO implements IDAO<Menu> {
             Cursor cursor = helper.getReadableDatabase().rawQuery(sql, new String[]{id.toString()});
             cursor.moveToFirst();
 
-            Menu p = null;
+            Menu prato = null;
 
             if (cursor.getCount() > 0) {
-                p = new Menu();
-                preencherMenu(p, cursor);
+                prato = new Menu();
+                preencherMenu(prato, cursor);
             }
             cursor.close();
 
-            return p;
+            return prato;
         }
 
 
@@ -149,15 +149,19 @@ public class MenuDAO implements IDAO<Menu> {
     public Integer buscarIdporPosicao(Integer posicao) {
         String sql = "SELECT " + ID + " FROM " + TABELA;
         Cursor cursor = helper.getReadableDatabase().rawQuery(sql, null);
-        ArrayList<Integer> arrID = new ArrayList<Integer>();
+        ArrayList<Integer> arrID = new ArrayList<>();
         cursor.moveToFirst();
         for(int i = 0; i < cursor.getCount(); i++){
             arrID.add(cursor.getInt(cursor.getColumnIndex(ID)));
             cursor.moveToNext();
         }
         cursor.close();
-        Integer id = arrID.get(posicao);
-        return  id;
+        return  (arrID.get(posicao));
+    }
+
+    @Override
+    public Boolean validarLogin(String login, String senha) {
+        return null;
     }
 
 }

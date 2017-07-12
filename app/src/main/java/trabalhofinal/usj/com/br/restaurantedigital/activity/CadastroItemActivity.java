@@ -53,9 +53,9 @@ public class CadastroItemActivity  extends Activity {
 
         //Compara versão do android para poder usar um método depreciado ou não.
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            imagemCadastrar.setImageDrawable(getApplicationContext().getDrawable(R.drawable.icons17));
+            imagemCadastrar.setImageDrawable(getApplicationContext().getDrawable(R.drawable.logo));
         } else {
-            imagemCadastrar.setImageDrawable(getResources().getDrawable(R.drawable.icons17));
+            imagemCadastrar.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         }
 
         Integer idItem = getIntent().getIntExtra(MenuDAO.ID, 0);
@@ -109,6 +109,22 @@ public class CadastroItemActivity  extends Activity {
     }
 
     public void cadastrar(View view) {
+
+        if (preco.getText().toString().equals("")&& nomeItem.getText().toString().equals("")&& descricao.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), R.string.preencher_todos_os_campos, Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (preco.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), R.string.preencher_preco, Toast.LENGTH_LONG).show();
+            return;
+        }else if (nomeItem.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), R.string.preencher_nome, Toast.LENGTH_LONG).show();
+            return;
+        }else if (descricao.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), R.string.preencher_descricao, Toast.LENGTH_LONG).show();
+            return;
+        }
+
         Menu p = new Menu();
         p.setPreco(preco.getText().toString());
         p.setNomePrato(nomeItem.getText().toString());
@@ -148,14 +164,14 @@ public class CadastroItemActivity  extends Activity {
     }
 
     private void prepararEdicao(Integer id){
-        Menu p = menuDAO.buscarPorId(id);
-        if(p == null){
+        Menu prato = menuDAO.buscarPorId(id);
+        if(prato == null){
             return;
         }
-        preco.setText(p.getPreco());
-        nomeItem.setText(p.getNomePrato());
-        descricao.setText(p.getDescricao());
-        converteByteEmImg(p.getImagem());
+        preco.setText(prato.getPreco());
+        nomeItem.setText(prato.getNomePrato());
+        descricao.setText(prato.getDescricao());
+        converteByteEmImg(prato.getImagem());
     }
 
     //modifica a ação do botão voltar
@@ -171,8 +187,7 @@ public class CadastroItemActivity  extends Activity {
         Bitmap bm = view.getDrawingCache();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] byteArray = stream.toByteArray();
-        return byteArray;
+        return (stream.toByteArray());
     }
 
     private void converteByteEmImg (byte[] bts){

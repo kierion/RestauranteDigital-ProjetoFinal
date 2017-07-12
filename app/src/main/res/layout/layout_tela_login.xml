@@ -40,6 +40,7 @@
         android:background="@android:color/background_light"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColor="@android:color/black"
         android:textSize="24sp" />
 
     <TextView
@@ -65,6 +66,7 @@
         android:background="@android:color/background_light"
         android:ems="10"
         android:inputType="textPassword"
+        android:textColor="@android:color/black"
         android:textSize="24sp" />
 
     <CheckBox

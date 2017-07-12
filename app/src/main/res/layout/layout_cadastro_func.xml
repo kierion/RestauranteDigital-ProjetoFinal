@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c3f18e"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/idFuncionarioCadastrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:background="#c3f18e"
+        android:text="@string/cadastro_novo_funcionario"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/idLoginLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/login_func"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/idLoginTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/background_light"
+            android:inputType="text"
+            android:textColor="@android:color/black"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/idTxtSenhaFunc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/senha_func"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/idSenhaTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/background_light"
+            android:inputType="number"
+            android:textColor="@android:color/black"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/idTxtCargo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/cargo_func"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/idCargoTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/background_light"
+            android:inputType="text"
+            android:textColor="@android:color/black"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/idBotaoSalvarNovoItem"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@android:color/holo_green_dark"
+            android:foregroundGravity="center"
+            android:gravity="center_vertical|center_horizontal|center"
+            android:onClick="cadastrarFuncionario"
+            android:text="@string/texto_botao_salvar_cadastro_item" />
+    </LinearLayout>
+
+</LinearLayout>

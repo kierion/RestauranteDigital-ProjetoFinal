@@ -12,57 +12,59 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import trabalhofinal.usj.com.br.restaurantedigital.R;
+import trabalhofinal.usj.com.br.restaurantedigital.dao.CadastroDAO;
 import trabalhofinal.usj.com.br.restaurantedigital.dao.IDAO;
-import trabalhofinal.usj.com.br.restaurantedigital.dao.MenuDAO;
-import trabalhofinal.usj.com.br.restaurantedigital.entity.Menu;
-import trabalhofinal.usj.com.br.restaurantedigital.util.CadastroAdapter;
+import trabalhofinal.usj.com.br.restaurantedigital.entity.Funcionarios;
+import trabalhofinal.usj.com.br.restaurantedigital.util.FuncionarioAdapter;
 
 /**
- * Created by Édipo on 01/07/2017.
+ * Created by jaqueline on 11/07/2017.
  */
 
-public class CadastroMenuListActivity extends Activity {
+public class GerenciarFuncionariosListActivity extends Activity {
 
     private ListView listView;
-    private IDAO<Menu> dao;
+    private IDAO<Funcionarios> funcionarioDAO;
     private int itemSelecionada, idSelecionado;
-    private AlertDialog menu, menuConfirmar;
-    private CadastroAdapter adapter = null;
+    private AlertDialog funcionarios, funcionariosConfirmar;
+    private FuncionarioAdapter adapter = null;
 
-    private AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
+    private AdapterView.OnItemClickListener listener =
+            new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> layout, View contentView, int position, long id) {
                     itemSelecionada = position;
                     idSelecionado = (int) id;
-                    menu.show();
+                    funcionarios.show();
                 }
             };
 
-    private DialogInterface.OnClickListener listenerMenu = new DialogInterface.OnClickListener() {
+    private DialogInterface.OnClickListener listenerFuncionarios =
+            new DialogInterface.OnClickListener() {
 
                 @Override
                 public void onClick(DialogInterface dialogInterface, int item) {
 
-                    Integer idMenu = dao.buscarIdporPosicao(itemSelecionada);
+                    Integer idFuncionarios = funcionarioDAO.buscarIdporPosicao(itemSelecionada);
 
                     Intent intent;
                     switch (item){
                         case 0:
-                            intent = new Intent(getApplicationContext(), CadastroItemActivity.class);
-                            intent.putExtra(MenuDAO.ID, idMenu);
+                            intent = new Intent(getApplicationContext(), GerenciarFuncionariosActivity.class);
+                            intent.putExtra(CadastroDAO.ID, idFuncionarios);
                             startActivity(intent);
                             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                             break;
                         case 1:
-                            menuConfirmar.show();
+                            funcionariosConfirmar.show();
                             break;
 
                         case DialogInterface.BUTTON_POSITIVE:
-                            Boolean sucesso = dao.excluir(idMenu);
+                            Boolean sucesso = funcionarioDAO.excluir(idFuncionarios);
                             if (sucesso){
                                 Toast.makeText(getApplicationContext(), R.string.remover_item_sucesso,
                                         Toast.LENGTH_LONG).show();
-                               intent = new Intent(getApplicationContext(),CadastroMenuListActivity.class);
+                                intent = new Intent(getApplicationContext(),GerenciarFuncionariosListActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
 
@@ -72,7 +74,7 @@ public class CadastroMenuListActivity extends Activity {
                             break;
 
                         case DialogInterface.BUTTON_NEGATIVE:
-                            menuConfirmar.dismiss();
+                            funcionariosConfirmar.dismiss();
                             break;
                     }
                 }
@@ -81,16 +83,16 @@ public class CadastroMenuListActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_cadastro_listview_cadastro_itens);
-        dao = new MenuDAO(getApplicationContext());
+        setContentView(R.layout.layout_funcionarios_listview);
+        funcionarioDAO = new CadastroDAO(getApplicationContext());
 
-        listView = (ListView) findViewById(R.id.idCadastroListView);
-        adapter = new CadastroAdapter(this, dao.listar());
+        listView = (ListView) findViewById(R.id.idFuncListView);
+        adapter = new FuncionarioAdapter(getApplicationContext(), funcionarioDAO.listar());
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(listener);
 
-        menu = criarAlertDialog();
-        menuConfirmar = criarConfirmacaoDialog();
+        funcionarios = criarAlertDialog();
+        funcionariosConfirmar = criarConfirmacaoDialog();
     }
 
     private AlertDialog criarAlertDialog(){
@@ -101,7 +103,7 @@ public class CadastroMenuListActivity extends Activity {
         AlertDialog.Builder builder =
                 new AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog_Alert);
         builder.setTitle(R.string.opcoes);
-        builder.setItems(itens, listenerMenu);
+        builder.setItems(itens, listenerFuncionarios);
 
         return builder.create();
     }
@@ -111,17 +113,17 @@ public class CadastroMenuListActivity extends Activity {
         AlertDialog.Builder builder =
                 new AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog_Alert);
         builder.setMessage(R.string.confirmacao_exclusao);
-        builder.setPositiveButton(R.string.sim, listenerMenu);
-        builder.setNegativeButton(R.string.nao, listenerMenu);
+        builder.setPositiveButton(R.string.sim, listenerFuncionarios);
+        builder.setNegativeButton(R.string.nao, listenerFuncionarios);
         return builder.create();
     }
 
-    public void novoCadastro(View view) {
+    public void novoCadastroFunc(View view) {
 
         Intent intent = new Intent(getApplicationContext(),
-                CadastroItemActivity.class);
+                GerenciarFuncionariosActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt(CadastroItemActivity.EXTRA_ID_MENU, 0);
+        bundle.putInt(GerenciarFuncionariosActivity.EXTRA_ID_FUNCIONARIO, 0);
         intent.putExtras(bundle);
         startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);

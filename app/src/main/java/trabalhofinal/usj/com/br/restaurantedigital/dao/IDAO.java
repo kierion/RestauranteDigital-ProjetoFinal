@@ -1,7 +1,6 @@
 package trabalhofinal.usj.com.br.restaurantedigital.dao;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Édipo on 01/07/2017.
@@ -19,4 +18,5 @@ public interface IDAO<T> {
 
     T buscarPorId(Integer id);
     Integer buscarIdporPosicao(Integer id);
+    Boolean validarLogin (String login, String senha);
 }

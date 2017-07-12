@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import trabalhofinal.usj.com.br.restaurantedigital.R;
 
 /**
  * Created by Édipo on 01/07/2017.

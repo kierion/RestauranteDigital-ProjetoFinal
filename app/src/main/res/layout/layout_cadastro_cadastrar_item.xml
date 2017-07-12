@@ -19,27 +19,6 @@
         android:textColor="@android:color/black"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/idCategoria"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/spinner"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        tools:ignore="RtlHardcoded" />
-
-    <Spinner
-        android:id="@+id/idSpinnerMenuCadastro"
-        android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:background="@android:color/background_light" />
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,7 +50,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:background="@android:color/holo_green_dark"
-                android:text="@string/busca_do_cartao" />
+                android:text="@string/busca_do_cartao"
+                tools:ignore="RtlHardcoded" />
 
             <Button
                 android:id="@+id/idTirarFoto"
@@ -81,7 +61,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="40dp"
                 android:background="@android:color/holo_green_dark"
-                android:text="@string/tirar_foto" />
+                android:text="@string/tirar_foto"
+                tools:ignore="RtlHardcoded" />
         </LinearLayout>
 
     </LinearLayout>

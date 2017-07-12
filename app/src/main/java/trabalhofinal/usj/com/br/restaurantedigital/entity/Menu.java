@@ -1,12 +1,10 @@
 package trabalhofinal.usj.com.br.restaurantedigital.entity;
 
-import java.io.Serializable;
-
 /**
  * Created by Édipo on 01/07/2017.
  */
 
-public class Menu implements Serializable{
+public class Menu {
 
     private Integer id;
     private String preco;
